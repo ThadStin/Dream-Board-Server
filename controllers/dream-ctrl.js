@@ -1,5 +1,6 @@
 const Dream = require('../models/dream-model');
 
+// Create route //
 createDream = (req,res) => {
   const body = req.body;
 
@@ -32,6 +33,8 @@ createDream = (req,res) => {
       })
     })
 }
+
+// Update route //
 updateDream = async (req, res) => {
     const body = req.body
 
@@ -72,6 +75,7 @@ updateDream = async (req, res) => {
     })
 }
 
+// Delete route //
 deleteDream = async (req, res) => {
     await Dream.findOneAndDelete({ _id: req.params.id }, (err, dream) => {
         if (err) {
@@ -88,6 +92,7 @@ deleteDream = async (req, res) => {
     }).catch(err => console.log(err))
 }
 
+// Show route //
 getDreamById = async (req, res) => {
     await Dream.findOne({ _id: req.params.id }, (err, dream) => {
         if (err) {
@@ -103,6 +108,7 @@ getDreamById = async (req, res) => {
     }).catch(err => console.log(err))
 }
 
+// Fetch all route //
 getDreams = async (req, res) => {
     await Dream.find({}, (err, dreams) => {
         if (err) {
